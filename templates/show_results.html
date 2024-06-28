@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart Analysis</title>
+</head>
+<body>
+    <h1>Chart Analysis</h1>
+    {% if plot_paths %}
+        {% for plot_path in plot_paths %}
+            <img src="{{ url_for('static', filename=plot_path.split('/')[-1]) }}" alt="Plot" width="600">
+        {% endfor %}
+    {% else %}
+        <p>No plots available.</p>
+    {% endif %}
+</body>
+</html>

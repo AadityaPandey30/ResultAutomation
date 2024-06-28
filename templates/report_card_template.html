@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Card</title>
+</head>
+<body>
+    <form action="{{ url_for('generate_pdf') }}" method="post">
+        {% for student in student_data %}
+            <input type="hidden" name="student_data[]" value='{{ student | tojson }}'>
+        {% endfor %}
+        <button type="submit">Print All</button>
+    </form>
+    
+    <div class="report">
+        <h1>Report Card</h1>
+
+    {% for student in student_data %}
+        <p>Name: {{ student['Name'] }}</p>
+        <p>Roll Number: {{ student['Roll Number'] }}</p>
+        <p>Maths: {{ student['Maths'] }}</p>
+        <p>Hindi: {{ student['Hindi'] }}</p>
+        <p>English: {{ student['English'] }}</p>
+        <p>Geo: {{ student['Geo'] }}</p>
+        <p>Total: {{ student['Total'] }}</p>
+        <p>Overall Percentage: {{ student['OverallPercentage'] }}</p>
+        <p>Rank: {{ student['Rank'] }}</p>
+        <hr>
+    {% endfor %}
+    </div>
+</body>
+</html>

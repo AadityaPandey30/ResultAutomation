@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    position: relative;
+}
+
+.back{
+    padding: 4% 0px;
+    z-index: 100;
+    position: relative;
+    background-color: rgb(0, 0, 0, 0.25);
+}
+
+.bac-img{
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.site-usage{
+    background-color: rgba(222, 184, 135, 0.237);
+    padding: 4%;
+    margin: 4%;
+    margin-top: 3%;
+    border-radius: 20px;
+    font-size: larger;
+    color: rgb(207, 255, 198);
+}
+
+.dashboard{
+    background-color: #800000;
+    opacity: 0.8;
+    width: 50%;
+    padding: 1% 2.5% 2.5% 2.5%;
+    border-radius: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    min-width: fit-content;
+}
+
+.dashboard h1{
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.dashboard input{
+    width: 90%;
+    padding: 9px 13px;
+    border-radius: 8px;
+    margin: 2% 0px;
+}
+
+.file{
+    padding: 0px;
+    margin-left: 0px;
+    background-color: aliceblue;
+    border: 1px solid brown;
+    border-radius: 4px;
+}
+
+.dashboard span{
+    color: rgb(0, 13, 255);
+}
+
+.existing-info{
+    background-color: rgb(127, 202, 255);
+    border-radius: 8px ;
+    padding: 1% 4% 4% 4%;
+    line-height: 1.8;
+}
+
+.changes{
+    text-align: center;
+    background-color: rgb(255, 127, 67);
+    padding: 2%;
+    margin: 3% 0%;
+    border-radius: 8px;
+}
+
+button{
+    padding: 9px 13px;
+    background-color: rgb(209, 159, 255);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.flex{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:space-evenly;
+}
+
+.schoolLogo{
+    margin-right: 15px;
+}
+
+.upload-here{
+    background-color: rgba(128, 175, 171, 0.186);
+    border-radius: 20px;
+    width: fit-content;
+    min-width: 300px;
+    padding: 4%;
+    box-shadow: 0 2px 5px #aca9a9d8,0 5px 8px #f9f3f3e2!important;;
+}
+
+.upload-here h2{
+    color: rgb(0, 191, 212);
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.upload-here input{
+    background-color: rgba(255, 222, 174, 0.566);
+    padding: 9px 13px;
+    border-radius: 8px;
+    margin-bottom: 4%;
+}
+
+.upload-here button{
+    height: fit-content;
+    padding: 10px 13px;
+    margin-left: 2%;
+}
+
+.status{
+    background-color: rgba(240, 255, 255, 0.501);
+    border: 2px solid greenyellow;
+    padding: 9px 13px;
+    border-radius: 8px;
+    margin: 10px 0px;
+    font-weight: 600;
+}
+
+.main-doc{
+    background-color: rgba(240, 255, 255, 0.301);
+    border: 2px solid red;
+    padding: 2%;
+    border-radius: 14px;
+}
+
+.report-card{
+    background-color: rgb(189, 52, 123);
+    margin-left: 0;
+}
+
+@media only screen and (max-width: 800px) {
+    .flex{
+        flex-direction: column;
+    }
+    .dashboard{
+        width: 100%;
+    }
+}
