@@ -9,120 +9,145 @@
     <div class="container">
       <img src="../static//schoolimg.jpg" class="bac-img">
       <div class="back">
-        <div class="site-usage">
-          <h1 style="text-align: center;">DIRECTIONS TO USE THE SITE</h1>
-          <p>There are three sections in the site.</p>
-          <p>1. DASHBOARD: This shows the existing records of details to be filled in report cards.</p>
-          <p>2. MAKE CHANGES: This section is given so that users can update the DASHBOARD details (Need to be done only once).</p>
-          <p>3. UPLOAD: This is the section where we are supposed to upload the excel file contailing information in the following order: <br>
-          * First Column is the Roll Number<br>
-          * Second Column is the Name<br>
-          * From third column to last column there are Subject names (There can be any number of subjects)<br>
-          * There can be any number of Students
-          </p>
-          <p>You can download the demo excel sheet from here</p>
+        <header>
+          <button id="view">👁️</button>
+        </header>
+        <div class="content">
+          <div class="site-usage">
+            <h1 style="text-align: center;">DIRECTIONS TO USE THE SITE</h1>
+            <p>There are three sections in the site.</p>
+            <p>1. DASHBOARD: This shows the existing records of details to be filled in report cards.</p>
+            <p>2. MAKE CHANGES: This section is given so that users can update the DASHBOARD details (Need to be done only once).</p>
+            <p>3. UPLOAD: This is the section where we are supposed to upload the excel file contailing information in the following order: <br>
+            * First Column is the Roll Number<br>
+            * Second Column is the Name<br>
+            * From third column to last column there are Subject names (There can be any number of subjects)<br>
+            * There can be any number of Students
+            </p>
+            <p>You can download the demo excel sheet from here</p>
+            <button onclick="downloadFile()" style="margin: 15px; background-color: rgba(252, 255, 255, 0.611); color: rgb(0, 0, 0); ">Download Demo</button>
+          </div>
+          <div class="flex">
+            <div class="dashboard">
+                <h2>DASHBOARD</h2>
+                <div class="existing-info">
+                {% if dashboard_data %}
+                <p><span>School Name:</span> {{ dashboard_data.school_name }}</p>
+                <p><span>Class:</span> {{ dashboard_data.class_name }}</p>
+                <p><span>Section:</span> {{ dashboard_data.section }}</p>
+                {% if dashboard_data.school_logo_path %}
+                    <div class="schoolLogo">
+                <p><span style="margin-right: 15px;">School Logo</span></p><img
+                    src="static\school_logo.png"
+                    alt="School Logo"
+                    width="100"
+                /></div>
+                {% endif %}
+                {% if dashboard_data.principal_signature_path %}
+                <div class="principalSign">
+                <p><span style="margin-right: 15px;">Principal's Signature</span></p><img
+                    src="static\principal_signature.png"
+                    alt="Principal Signature"
+                    width="100"
+                /></div>
+            </div>
+                {% endif %}
+                {% else %}
+                <p>No dashboard data available.</p>
+                {% endif %}
+            <div class="changes">
+                <p style="margin-top: 24px; font-size: 24px; font-weight: 600;">Make Changes here: </p>
+                <form
+                    action="{{ url_for('save_dashboard') }}"
+                    method="post"
+                    enctype="multipart/form-data"
+                >
+                    <input
+                        type="text"
+                        name="school_name"
+                        placeholder="School Name"
+                        required
+                    /><br />
+                    <input
+                        type="text"
+                        name="class_name"
+                        placeholder="Class Name"
+                        required
+                    /><br />
+                    <input
+                        type="text"
+                        name="section"
+                        placeholder="Section"
+                        required
+                    /><br />
+                    <input class="file" type="file" name="principal_signature" title="Choose School Logo"  accept="image/*" /><br />
+                    <input class="file" type="file" name="school_logo" title="Choose Principal Signature"  accept="image/*" /><br />
+  
+                    <button type="submit">Save Dashboard</button>
+                </form>
+            </div>
+            </div>
+            
+            <div class="upload-here">
+            <h2>Upload Student Data</h2>
+            <form
+              action="{{ url_for('upload') }}"
+              method="post"
+              enctype="multipart/form-data"
+            >
+            <div style="display: flex;">
+              <input type="file" name="file" accept=".xlsx" required /><br />
+              <button type="submit">Upload</button>
+            </div>
+            </form>
+        
+            {% if message %}
+            <p class="status">Status: {{ message }}</p>
+            {% endif %} {% if download_link %}
+            <div class="main-doc">
+              <h2 style="color: black;">Main Results</h2>
+            <a style="font-size: 20px; " 
+              href="{{ url_for('static', filename=download_link.split('/')[-1]) }}"
+              download
+              >Download Processed Excel File</a
+            ><br>
+            <p style="margin: 20px 0px 0px 0px;">You can view the Chart Analysis</p>
+            {% endif %} {% if plot_paths %}
+            <a style="font-size: 20px; margin: 20px 0px;" href="{{ url_for('show_plots') }}">View Chart Analysis</a><br>
+            {% endif %} {% if generate_report_cards_link %}
+            <p style="margin: 20px 0px;">You can download Report Cards PDF</p>
+            <form action="{{ url_for('generate_pdf') }}" method="post" style="text-align: left;">
+              <button type="submit" class="report-card">Download Report Cards</button>
+            </form>
+          </div>
+          </div>
+            {% endif %}
         </div>
-        <div class="flex">
-          <div class="dashboard">
-              <h1>DASHBOARD</h1>
-              <div class="existing-info">
-              {% if dashboard_data %}
-              <p><span>School Name:</span> {{ dashboard_data.school_name }}</p>
-              <p><span>Class:</span> {{ dashboard_data.class_name }}</p>
-              <p><span>Section:</span> {{ dashboard_data.section }}</p>
-              {% if dashboard_data.school_logo_path %}
-              <div class="flex">
-                  <div class="schoolLogo">
-              <p><span>School Logo</span></p><img
-                  src="static\school_logo.png"
-                  alt="School Logo"
-                  width="100"
-              /></div>
-              {% endif %}
-              {% if dashboard_data.principal_signature_path %}
-              <hr style="border: 1px solid blue; margin: 10px 0px;">
-              <div class="principalSign">
-              <p><span>Principal's Signature</span></p><img
-                  src="static\principal_signature.png"
-                  alt="Principal Signature"
-                  width="100"
-              /></div>
-          </div>
-          </div>
-              {% endif %}
-              {% else %}
-              <p>No dashboard data available.</p>
-              {% endif %}
-          <div class="changes">
-              <p style="margin-top: 24px; font-size: 24px; font-weight: 600;">Make Changes here: </p>
-              <form
-                  action="{{ url_for('save_dashboard') }}"
-                  method="post"
-                  enctype="multipart/form-data"
-              >
-                  <input
-                      type="text"
-                      name="school_name"
-                      placeholder="School Name"
-                      required
-                  /><br />
-                  <input
-                      type="text"
-                      name="class_name"
-                      placeholder="Class Name"
-                      required
-                  /><br />
-                  <input
-                      type="text"
-                      name="section"
-                      placeholder="Section"
-                      required
-                  /><br />
-                  <input class="file" type="file" name="principal_signature"  accept="image/*" /><br />
-                  <input class="file" type="file" name="school_logo"  accept="image/*" /><br />
-
-                  <button type="submit">Save Dashboard</button>
-              </form>
-          </div>
-          </div>
-          
-          <div class="upload-here">
-          <h2>Upload Student Data</h2>
-          <form
-            action="{{ url_for('upload') }}"
-            method="post"
-            enctype="multipart/form-data"
-          >
-          <div style="display: flex;">
-            <input type="file" name="file" accept=".xlsx" required /><br />
-            <button type="submit">Upload</button>
-          </div>
-          </form>
-      
-          {% if message %}
-          <p class="status">Status: {{ message }}</p>
-          {% endif %} {% if download_link %}
-          <div class="main-doc">
-            <h2 style="color: black;">Main Results</h2>
-          <a style="font-size: 20px; " 
-            href="{{ url_for('static', filename=download_link.split('/')[-1]) }}"
-            download
-            >Download Processed Excel File</a
-          ><br>
-          <p style="margin: 20px 0px 0px 0px;">You can view the Chart Analysis</p>
-          {% endif %} {% if plot_paths %}
-          <a style="font-size: 20px; margin: 20px 0px;" href="{{ url_for('show_plots') }}">View Chart Analysis</a><br>
-          {% endif %} {% if generate_report_cards_link %}
-          <p style="margin: 20px 0px;">You can download Report Cards PDF</p>
-          <form action="{{ url_for('generate_pdf') }}" method="post" style="text-align: left;">
-            <button type="submit" class="report-card">Download Report Cards</button>
-          </form>
         </div>
-        </div>
-          {% endif %}
-      </div>
 
       </div>
     </div>
+    <script>
+      function downloadFile() {
+          const link = document.createElement('a');
+          link.href = '../static/students.xlsx'; 
+          link.download = 'students.xlsx';
+          link.click();
+      }
+
+      var view = document.querySelector("#view");
+var content = document.querySelector(".content");
+
+view.addEventListener("click", function (e) {
+    if (content.style.display === "none" || content.style.display === "") {
+        content.style.display = "block";
+    } else {
+        content.style.display = "none";
+    }
+});
+  </script>
   </body>
+  <footer style="background-color: rgba(0, 0, 0, 0.836); text-align: right;position: relative; z-index: 100; padding: 4% 4% 2% 2%;">
+    <p style="font-size: 20px; color: gray;">This site is designed and developed by <a style="color: aquamarine;" href="https://www.linkedin.com/in/aaditya-pandey-ab2829257">Aaditya Pandey</a></p>
+  </footer>
 </html>

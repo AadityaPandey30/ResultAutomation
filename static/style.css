@@ -3,15 +3,36 @@
     padding: 0;
 }
 
+.body{
+    background-color: black;
+}
+
 .container{
     position: relative;
+}
+
+.content{
+    max-width: 1700px;
+    margin: auto;
+}
+
+
+#view{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(240, 248, 255, 0.405);
+    box-shadow: 0 1px 3px #aca9a9d8,0 2px 5px #f9f3f3e2!important;
+    padding: 4px 6px;
+    font-size: 20px;
 }
 
 .back{
     padding: 4% 0px;
     z-index: 100;
     position: relative;
-    background-color: rgb(0, 0, 0, 0.25);
+    background-color: rgb(0, 0, 0, 0.3);
+    min-height: 100vh;
 }
 
 .bac-img{
@@ -21,30 +42,49 @@
 }
 
 .site-usage{
-    background-color: rgba(222, 184, 135, 0.237);
     padding: 4%;
     margin: 4%;
     margin-top: 3%;
     border-radius: 20px;
     font-size: larger;
     color: rgb(207, 255, 198);
+    transition-duration: 0.4s;
+    box-shadow: 0 2px 5px #aca9a9d8,0 5px 8px #f9f3f3e2!important;
+    line-height: 1.4;
+    font-family:sans-serif
+}
+
+.site-usage:hover{
+    background-color: rgba(24, 24, 24, 0.637);
+}
+
+.site-usage h1{
+    margin-bottom: 16px;
 }
 
 .dashboard{
-    background-color: #800000;
+    background-color: #0f2cbe1d;
     opacity: 0.8;
     width: 50%;
     padding: 1% 2.5% 2.5% 2.5%;
     border-radius: 20px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family:'Courier New', Courier, monospace;
     font-size: 20px;
     min-width: fit-content;
+    box-shadow: 0 2px 5px #aca9a9d8,0 5px 8px #f9f3f3e2!important;
+    transition-duration: 0.4s;
 }
 
-.dashboard h1{
+.dashboard:hover{
+    background-color: #0f26be5c;
+}
+
+
+.dashboard h2{
     text-align: center;
     font-size: 45px;
     margin-bottom: 15px;
+    color: white;
 }
 
 .dashboard input{
@@ -67,15 +107,16 @@
 }
 
 .existing-info{
-    background-color: rgb(127, 202, 255);
-    border-radius: 8px ;
+    background-color: rgb(114 235 125 / 47%);;
+    border-radius: 8px;
     padding: 1% 4% 4% 4%;
+    font-weight: 600;
     line-height: 1.8;
 }
 
 .changes{
     text-align: center;
-    background-color: rgb(255, 127, 67);
+    background-color: rgb(114 235 125 / 47%);;
     padding: 2%;
     margin: 3% 0%;
     border-radius: 8px;
@@ -91,11 +132,15 @@ button{
 .flex{
     display: flex;
     flex-direction: row-reverse;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
 }
 
 .schoolLogo{
-    margin-right: 15px;
+    display: flex;
+}
+
+.principalSign{
+    display: flex;
 }
 
 .upload-here{
@@ -104,11 +149,17 @@ button{
     width: fit-content;
     min-width: 300px;
     padding: 4%;
-    box-shadow: 0 2px 5px #aca9a9d8,0 5px 8px #f9f3f3e2!important;;
+    box-shadow: 0 2px 5px #aca9a9d8,0 5px 8px #f9f3f3e2!important;
+    transition-duration: 0.4s;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.upload-here:hover{
+    background-color: rgba(8, 55, 51, 0.486);
 }
 
 .upload-here h2{
-    color: rgb(0, 191, 212);
+    color: rgb(141, 204, 255);
     text-align: center;
     font-size: 32px;
     margin-bottom: 20px;
@@ -144,15 +195,16 @@ button{
 }
 
 .report-card{
-    background-color: rgb(189, 52, 123);
+    background-color: rgba(182, 4, 96, 0.486);
     margin-left: 0;
 }
 
-@media only screen and (max-width: 800px) {
+@media (max-width: 500px) {
     .flex{
         flex-direction: column;
     }
-    .dashboard{
-        width: 100%;
+    .bac-img{
+        height: 100vh;
+        width:fit-content;
     }
 }
