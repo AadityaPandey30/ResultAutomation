@@ -10,9 +10,6 @@ ResultAutomation is a web-based application designed to automate the process of 
 - Generate PDF report cards with detailed academic and extra-curricular performance.
 - Customizable templates for school information and report card layout.
 
-## Project Demo
-(https://drive.google.com/file/d/1bMRxUaDFGDaJ_zpIL-_oook08Cpl0W55/view?usp=sharing)
-
 ## Project Snaps
 
 ![Screenshot 2024-06-30 143026](https://github.com/AadityaPandey30/ResultAutomation/assets/125696438/be968639-c81b-4e82-94fc-ea12be9700c7)
