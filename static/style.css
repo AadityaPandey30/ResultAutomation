@@ -199,12 +199,40 @@ button{
     margin-left: 0;
 }
 
-@media (max-width: 500px) {
+@media (min-width: 500px) {
+    .content{
+        background-color: rgba(0, 0, 0, 0.501);
+    }
     .flex{
         flex-direction: column;
+        flex-direction: column-reverse;
+        padding: 4%;
     }
     .bac-img{
         height: 100vh;
         width:fit-content;
+    }
+    .dashboard{
+        width: 93%;
+        background-color: #0f26be5c;
+    }
+    .dashboard .existing-info{
+        font-size: larger;
+    }
+    .dashboard .changes{
+        font-size: larger;
+    }
+    .upload-here{
+        width: 90%;
+        margin: 4% 0px;
+        background-color: rgba(8, 55, 51, 0.486);
+    }
+    .upload-here input{
+        width: 90%;
+        font-size: large;
+    }
+    .upload-here button
+    {
+        font-size: large;
     }
 }
