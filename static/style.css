@@ -106,7 +106,7 @@
 }
 
 .existing-info{
-    background-color: rgb(114 235 125 / 47%);;
+    background-color: rgb(242 238 255 / 64%);    ;;
     border-radius: 8px;
     padding: 1% 4% 4% 4%;
     font-weight: 600;
@@ -115,7 +115,7 @@
 
 .changes{
     text-align: center;
-    background-color: rgb(114 235 125 / 47%);;
+    background-color: rgba(255, 255, 255, 0.659);;
     padding: 2%;
     margin: 3% 0%;
     border-radius: 8px;
@@ -209,7 +209,6 @@ button{
     }
     .bac-img{
         height: 100vh;
-        width:fit-content;
     }
     .dashboard{
         width: 93%;
