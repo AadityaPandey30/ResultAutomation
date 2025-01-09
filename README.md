@@ -11,7 +11,7 @@ ResultAutomation is a web-based application designed to automate the process of 
 - Customizable templates for school information and report card layout.
 
 ## Deployed Link
-
+https://resultautomation.onrender.com/
 
 ## Project Snaps
 
